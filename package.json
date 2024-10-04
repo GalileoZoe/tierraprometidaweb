@@ -1,7 +1,6 @@
 {
   "name": "tierraprometida",
   "version": "0.1.0",
-  "proxy": "http://localhost:3000",
   "private": true,
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
@@ -45,5 +44,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }
