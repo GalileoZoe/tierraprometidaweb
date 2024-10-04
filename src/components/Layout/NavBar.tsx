@@ -1,104 +1,87 @@
-import React from 'react';
-import '../../App.css';
-import { useFeed } from '../../context/FeedContext';
-import { useTheme } from '../../context/ThemeContext';
-import { useSession } from '../../context/SessionContext';
-import { FaStore, FaToggleOff, FaToggleOn } from 'react-icons/fa';
+import React from "react";
+import "../../App.css";
+import { useFeed } from "../../context/FeedContext";
+import { useTheme } from "../../context/ThemeContext";
+import { useSession } from "../../context/SessionContext";
 
 export const NavBar: React.FC = () => {
   const { feed, changeFeed } = useFeed();
-  const {session, changeSession}= useSession();
-  const { theme, changeTheme } = useTheme();
+  const { session } = useSession();
+  const { theme } = useTheme();
 
-  const AppTheme = () => {
-    switch (theme) {
-      case 0:
-        return 'Tema Claro';
-      case 1:
-        return 'Tema Rojo';
-      case 2:
-        return 'Tema Oscuro';
-      default:
-        return 'App';
-    }
-  };
-
-  const setTheme = (themeIndex: number) => () => changeTheme(themeIndex);
+  // Determina la clase del tema
+  const getThemeClass = (isRed: boolean) =>
+    isRed ? "navbaritemred" : "navbaritem";
 
   return (
     <nav className="navbar">
       <div className="navbarlogo">
         <img
-          src={require(`../../assets/logo-0${theme === 2 ? '8' : '9'}.png`)}
+          src={require(`../../assets/logo-0${theme === 2 ? "8" : "9"}.png`)}
           alt="Logo"
         />
       </div>
       <ul className="navbaritems">
-      {feed==1?null:  <li>
-          <a
-            className={theme === 2 ? 'navbaritemred' : 'navbaritem'}
-            onClick={() => changeFeed(1)}
-          >
-            Inicio
-          </a>
-        </li>}
+        {feed !== 1 && (
+          <li>
+            <button
+              className={getThemeClass(theme === 2)}
+              onClick={() => changeFeed(1)}
+            >
+              Inicio
+            </button>
+          </li>
+        )}
         <li>
-          <a
-            className={theme === 2 ? 'navbaritemred' : 'navbaritem'}
+          <button
+            className={getThemeClass(theme === 2)}
             onClick={() => changeFeed(2)}
           >
             Nosotros
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            className={theme === 2 ? 'navbaritemred' : 'navbaritem'}
+          <button
+            className={getThemeClass(theme === 2)}
             onClick={() => changeFeed(3)}
           >
             Servicios
-          </a>
+          </button>
         </li>
-        {session==1?
+        {session === 1 && (
           <li>
-          <a
-            className={theme === 2 ? 'navbaritemred' : 'navbaritem'}
-            onClick={() => changeFeed(7)}
-          >
-            Usuarios
-          </a>
-        </li>:null}
+            <button
+              className={getThemeClass(theme === 2)}
+              onClick={() => changeFeed(7)}
+            >
+              Usuarios
+            </button>
+          </li>
+        )}
         <li>
-          <a
-            className={theme === 2 ? 'navbaritemred' : 'navbaritem'}
+          <button
+            className={getThemeClass(theme === 2)}
             onClick={() => changeFeed(5)}
           >
             Ubicación
-          </a>
+          </button>
         </li>
-        
         <li>
-          <a
-            className={theme === 2 ? 'navbaritemred' : 'navbaritem'}
+          <button
+            className={getThemeClass(theme === 2)}
             onClick={() => changeFeed(6)}
           >
             Contacto
-          </a>
+          </button>
         </li>
-        
         <li>
-          <a
-            className={theme === 2 ? 'navbaritemred' : 'navbaritem'}
-            onClick={()=>changeFeed(11)}
+          <button
+            className={getThemeClass(theme === 2)}
+            onClick={() => changeFeed(11)}
           >
             Ayuda
-          </a>
+          </button>
         </li>
-        {/* <li>
-        <li className={theme === 2 ? 'navbaritemred' : 'navbaritem'} onClick={()=>{theme==1?changeTheme(0):changeTheme(1)}} ><FaStore className='icon'/></li>
-        
-        </li> */}
-
-    
       </ul>
     </nav>
   );
