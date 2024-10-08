@@ -415,6 +415,7 @@
   height: 1.5em;
   transition: all 0.8s ease-in-out;
   color: #32cd32;
+  background-color: transparent;
   text-align: center;
   cursor: pointer;
 }
