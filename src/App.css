@@ -733,6 +733,8 @@
   color: #db1313;
   text-transform: uppercase;
   cursor: pointer;
+  border-radius: 20px;
+  border: none;
   font-size: 1em;
   transition: color 0.8s ease;
 }
