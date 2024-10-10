@@ -705,12 +705,13 @@
 }
 
 .navbaritem {
+  background-color: transparent;
   margin-left: 20px;
   color: #db1313;
   cursor: pointer;
   border-radius: 20px;
   border: none;
-  font-size: 2em;
+  font-size: 1em;
   transition: color 0.8s ease;
 }
 
